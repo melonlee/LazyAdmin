@@ -1,0 +1,55 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE mapper PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN" "http://mybatis.org/dtd/mybatis-3-mapper.dtd">
+<mapper namespace="lazyadmin.mapper.AdminMapper">
+
+
+    <resultMap id="BaseResultMap" type="lazyadmin.entity.Admin">
+        <id column="id" property="id" jdbcType="INTEGER"/>
+        <result column="username" property="username" jdbcType="VARCHAR"/>
+        <result column="password" property="password" jdbcType="VARCHAR"/>
+        <result column="salt" property="salt" jdbcType="VARCHAR"/>
+    </resultMap>
+
+    <resultMap id="roles" type="java.lang.String">
+        <result column="role" property="role" jdbcType="VARCHAR"/>
+    </resultMap>
+
+    <resultMap id="permission" type="java.lang.String">
+        <result column="permission" property="permission" jdbcType="VARCHAR"/>
+    </resultMap>
+
+    <!-- 通用查询结果列-->
+    <sql id="Base_Column_List">
+        id, username, password
+    </sql>
+
+
+    <insert id="insertRoles">
+        insert into t_admin_role (admin_id,role_id)
+        values (#{adminId},
+        #{roleId})
+    </insert>
+
+    <delete id="deleteRoles">
+        delete from t_admin_role where admin_id = #{adminId} and role_id = #{roleId}
+    </delete>
+
+    <select id="findByName" resultType="lazyadmin.entity.Admin">
+        SELECT
+        <include refid="Base_Column_List"/>
+        from t_admin where username = #{username}
+    </select>
+
+    <select id="findRoles" resultMap="roles">
+        select role from t_admin admin, t_role role,t_admin_role ar
+         where admin.username= #{username}
+         and admin.id=ar.admin_id and role.id=ar.role_id
+    </select>
+
+    <select id="findPermissions" resultMap="permissions">
+         select permission from t_admin admin, t_role r, t_permissions p,
+         t_admin_role ar, t_role_permission rp
+         where admin.username=#{username} and admin.id=ar.admin_id
+         and r.id=ar.role_id and r.id=rp.role_id and p.id=rp.permission_id
+    </select>
+</mapper>
