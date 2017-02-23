@@ -1,13 +1,18 @@
 package lazyadmin.entity;
 
+import com.baomidou.mybatisplus.annotations.TableId;
+import com.baomidou.mybatisplus.annotations.TableName;
+import com.baomidou.mybatisplus.enums.IdType;
+
 import java.io.Serializable;
 import java.util.List;
 
 /**
  * Created by Melon on 17/2/22.
  */
+@TableName("t_role")
 public class Role implements Serializable {
-
+    @TableId(type = IdType.AUTO)
     private Long id;
     private String role; //角色标识 程序中判断使用,如"admin"
     private String description;

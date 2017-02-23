@@ -1,0 +1,104 @@
+.photo-gallery {
+    padding: 7px;
+    text-align: center;
+    font-size: 0;
+}
+.superbox-list {
+    display: inline-block;
+    padding: 6px;
+    
+    
+}
+
+.superbox-img {
+	max-width:100%;
+	width:100%;
+	cursor:pointer;
+}
+
+.superbox-info {
+    display: none;    
+}
+
+.img-info {
+    font-size: 12px;    
+}
+ 
+
+.superbox-show {
+    text-align: left;
+    position:relative;
+    width:100%;
+    width: calc(100% + 13px);
+    float:left;
+    padding:14px;
+    background: rgba(0, 0, 0, 0.25);
+    display:none;
+    margin: 7px -6px;
+
+}
+
+.superbox-show.toggled {
+    display: block;
+    -webkit-animation-name: fadeIn;
+    animation-name: fadeIn;
+}
+
+.superbox-current-img {
+	max-width:100%;
+}
+
+.superbox-float {
+	float:left;
+}
+.superbox-close {
+    opacity:0.5;
+    cursor:pointer;
+    position:absolute;
+    top:4px;
+    right:6px;
+    font-size: 17px;
+    line-height: 100%;
+}
+.superbox-close:hover {
+	opacity:1;
+}
+@media only screen and (min-width: 320px) {
+	.superbox-list {
+		width:50%;
+	}
+}
+@media only screen and (min-width: 486px) {
+	.superbox-list {
+		width:25%;
+	}
+}
+@media only screen and (min-width: 768px) {
+	.superbox-list {
+		width:16.66666667%;
+	}
+}
+@media only screen and (min-width: 1025px) {
+	.superbox-list {
+	    width:12.48%;
+            
+	}
+}
+@media (max-width: 992px) {
+    .img-info.media-body {
+        float: left;
+        width: 100%;
+    }
+    
+    .superbox-current-img {
+        width: 100%;
+    }
+    
+    .superbox-close {
+        background: #000;
+        width: 31px;
+        text-align: center;
+        top: 14px;
+        right: 14px;
+    }
+}

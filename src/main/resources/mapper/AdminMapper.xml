@@ -14,7 +14,7 @@
         <result column="role" property="role" jdbcType="VARCHAR"/>
     </resultMap>
 
-    <resultMap id="permission" type="java.lang.String">
+    <resultMap id="permissions" type="java.lang.String">
         <result column="permission" property="permission" jdbcType="VARCHAR"/>
     </resultMap>
 

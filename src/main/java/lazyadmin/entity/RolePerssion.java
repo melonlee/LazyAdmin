@@ -1,12 +1,15 @@
 package lazyadmin.entity;
 
+import com.baomidou.mybatisplus.annotations.TableId;
+import com.baomidou.mybatisplus.enums.IdType;
+
 import java.io.Serializable;
 
 /**
  * Created by Melon on 17/2/22.
  */
 public class RolePerssion implements Serializable {
-
+    
     private Long roleId;
     private Long permissionId;
 

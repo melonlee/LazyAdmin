@@ -1,16 +1,22 @@
 package lazyadmin.entity;
 
+import com.baomidou.mybatisplus.annotations.TableId;
+import com.baomidou.mybatisplus.annotations.TableName;
+import com.baomidou.mybatisplus.enums.IdType;
+
 import java.io.Serializable;
 
 /**
  * Created by Melon on 17/2/22.
  */
-public class Permisssion implements Serializable {
+@TableName("t_permission")
+public class Permission implements Serializable {
 
+    @TableId(type = IdType.AUTO)
     private Long id;
     private String permission; //权限标识 程序中判断使用,如"user:create"
     private String description;
-
+    private String createdate;
 
     public Long getId() {
         return id;
@@ -34,5 +40,13 @@ public class Permisssion implements Serializable {
 
     public void setDescription(String description) {
         this.description = description;
+    }
+
+    public String getCreatedate() {
+        return createdate;
+    }
+
+    public void setCreatedate(String createdate) {
+        this.createdate = createdate;
     }
 }

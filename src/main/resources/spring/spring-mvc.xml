@@ -22,6 +22,36 @@
     <bean class="org.springframework.validation.beanvalidation.MethodValidationPostProcessor"/>
 
 
+    <!-- 静态资源映射 -->
+    <mvc:resources mapping="/static/**" location="/static/"/>
+
+    <!-- 处理请求时返回json字符串的中文乱码问题 -->
+    <mvc:annotation-driven>
+        <mvc:message-converters>
+            <bean class="org.springframework.http.converter.StringHttpMessageConverter">
+                <property name="supportedMediaTypes">
+                    <list>
+                        <value>application/json;charset=UTF-8</value>
+                    </list>
+                </property>
+            </bean>
+            <bean id="fastJsonHttpMessageConverter"
+                  class="com.alibaba.fastjson.support.spring.FastJsonHttpMessageConverter">
+                <property name="supportedMediaTypes">
+                    <list>
+                        <value>application/json;charset=UTF-8</value>
+                    </list>
+                </property>
+                <property name="features">
+                    <array>
+                        <value>WriteMapNullValue</value>
+                        <value>WriteNullStringAsEmpty</value>
+                    </array>
+                </property>
+            </bean>
+        </mvc:message-converters>
+    </mvc:annotation-driven>
+
     <!--<bean id="objectMapper" class="lazyrest.common.util.CustomObjectMapper" init-method="init">-->
     <!--&lt;!&ndash; 驼峰转为下划线 &ndash;&gt;-->
     <!--<property name="camelCaseToLowerCaseWithUnderscores" value="false"/>-->
