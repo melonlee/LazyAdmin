@@ -1,5 +1,6 @@
 package lazyadmin.entity;
 
+import com.baomidou.mybatisplus.annotations.TableField;
 import com.baomidou.mybatisplus.annotations.TableId;
 import com.baomidou.mybatisplus.annotations.TableName;
 import com.baomidou.mybatisplus.enums.IdType;
@@ -13,14 +14,15 @@ import java.util.List;
 @TableName("t_admin")
 public class Admin implements Serializable {
 
-    
+
     @TableId(type = IdType.AUTO)
     private Long id;
     private String username;
     private String password;
     private Boolean locked = Boolean.FALSE;
     private String salt;
-
+    @TableField(exist = false)
+    private List<Long> roles;
 
     public Long getId() {
         return id;
@@ -60,6 +62,14 @@ public class Admin implements Serializable {
 
     public void setSalt(String salt) {
         this.salt = salt;
+    }
+
+    public List<Long> getRoles() {
+        return roles;
+    }
+
+    public void setRoles(List<Long> roles) {
+        this.roles = roles;
     }
 
     @Override

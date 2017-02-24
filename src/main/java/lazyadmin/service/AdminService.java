@@ -2,6 +2,7 @@ package lazyadmin.service;
 
 import lazyadmin.entity.Admin;
 
+import java.util.List;
 import java.util.Set;
 
 /**
@@ -41,4 +42,10 @@ public interface AdminService {
      * @return
      */
     public Set<String> findPermissions(String username);
+
+    List<Admin> findAll();
+
+    Admin findOne(Long id);
+
+    void delete(Long id);
 }

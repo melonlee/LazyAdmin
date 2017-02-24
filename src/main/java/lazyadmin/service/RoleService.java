@@ -33,5 +33,7 @@ public interface RoleService {
 
     void deletePermissionByRole(Long id);
 
-    Object findOne(Long id);
+    Role findOne(Long id);
+
+    List<Role> findByAdmin(Long id);
 }

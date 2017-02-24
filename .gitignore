@@ -302,3 +302,5 @@ target/lazyadmin/WEB-INF/views/role/detail.ftl
 target/lazyadmin/WEB-INF/views/role/index.ftl
 target/lazyadmin/WEB-INF/views/video/detail.ftl
 target/lazyadmin/WEB-INF/views/video/index.ftl
+target/lazyadmin/WEB-INF/views/account/detail.ftl
+target/lazyadmin/WEB-INF/views/account/index.ftl

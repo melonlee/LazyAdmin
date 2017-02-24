@@ -62,4 +62,8 @@ public class RoleServiceImpl implements RoleService {
     public Role findOne(Long id) {
         return roleMapper.selectById(id);
     }
+
+    public List<Role> findByAdmin(Long id) {
+        return null;
+    }
 }

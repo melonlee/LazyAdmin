@@ -1,5 +1,6 @@
 package lazyadmin.service.impl;
 
+import com.baomidou.mybatisplus.mapper.EntityWrapper;
 import lazyadmin.entity.Admin;
 import lazyadmin.mapper.AdminMapper;
 import lazyadmin.service.AdminService;
@@ -8,6 +9,7 @@ import org.springframework.stereotype.Service;
 import javax.annotation.Resource;
 import java.util.ArrayList;
 import java.util.HashSet;
+import java.util.List;
 import java.util.Set;
 
 /**
@@ -66,6 +68,18 @@ public class AdminServiceImpl implements AdminService {
 
         ArrayList<String> permissions = adminMapper.findPermissions(username);
         return new HashSet<String>(permissions);
+    }
+
+    public List<Admin> findAll() {
+        return adminMapper.selectList(new EntityWrapper<Admin>());
+    }
+
+    public Admin findOne(Long id) {
+        return adminMapper.selectById(id);
+    }
+
+    public void delete(Long id) {
+        adminMapper.deleteById(id);
     }
 
     private boolean check(Long roleId, Long permissionId) {

@@ -14,43 +14,42 @@
     <section id="content" class="container">
         <!-- Messages Drawer -->
     <#include "../common/messages.ftl">
-        <h2 class="page-title">角色管理</h2>
+        <h2 class="page-title">账户管理</h2>
         <hr class="whiter">
         <div class="block-area">
             <h2>
-                <a data-toggle="modal" href="#modalDefault" class="btn btn-sm">+新增角色</a>
+                <a data-toggle="modal" href="#modalDefault" class="btn btn-sm">+新增账户</a>
             </h2>
             <hr class="whiter">
             <br/><br/>
             <div class="block-area" id="horizontal">
+
                 <form class="form-horizontal" role="form" action="modify" method="post">
-
-
-                    <input type="hidden" name="id" value="<#if (role.id)??>${role.id}</#if>">
+                    <input type="hidden" name="id" value="<#if (admin.id)??>${admin.id}</#if>">
                     <div class="form-group">
-                        <label for="inputName1" class="col-md-2 control-label">角色名</label>
+                        <label for="inputName1" class="col-md-2 control-label">账户名</label>
                         <div class="col-md-10">
                             <input type="text" class="form-control input-sm" name="role"
-                                   placeholder="例如:admin" value="<#if (role.role)??>${role.role}</#if>">
+                                   placeholder="例如:admin" value="<#if (admin.username)??>${admin.username}</#if>">
                         </div>
                     </div>
 
                     <div class="form-group">
-                        <label for="inputName1" class="col-md-2 control-label">角色描述</label>
+                        <label for="inputName1" class="col-md-2 control-label">账户密码</label>
                         <div class="col-md-10">
-                            <input type="text" class="form-control input-sm" name="description"
-                                   placeholder="例如:系统管理员" value="<#if (role.description)??>${role.description}</#if>">
+                            <input type="text" class="form-control input-sm" name="role"
+                                   placeholder="例如:admin" value="<#if (admin.password)??>${admin.password}</#if>">
                         </div>
                     </div>
-                    <div class=" form-group">
-                        <label for="inputName1" class="col-md-2 control-label">角色权限</label>
-                        <div class="col-md-10">
 
-                        <#list permissions as permission>
+                    <div class=" form-group">
+                        <label for="inputName1" class="col-md-2 control-label">账户角色</label>
+                        <div class="col-md-10">
+                        <#list roles as role>
                             <label class="checkbox-inline">
-                                <input type="checkbox" checked="checked" value="${permission.id}"
+                                <input type="checkbox" checked="checked" value="${role.id}"
                                        name="permissions">
-                            ${permission.description}
+                            ${role.description}
                             </label>
                         </#list>
                         </div>
