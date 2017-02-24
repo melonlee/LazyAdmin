@@ -15,3 +15,4 @@
 <script src="<@spring.url '/static/js/calendar.min.js'/>"></script> <!-- Calendar -->
 <!-- All JS functions -->
 <script src="<@spring.url '/static/js/functions.js'/>"></script>
+<script src="<@spring.url '/static/js/icheck.js'/>"></script>

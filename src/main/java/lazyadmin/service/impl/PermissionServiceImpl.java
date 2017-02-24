@@ -30,4 +30,8 @@ public class PermissionServiceImpl implements PermissionService {
     public List<Permission> findAll() {
         return permissionMapper.selectList(new EntityWrapper<Permission>());
     }
+
+    public List<Permission> findByRole( Long roleId) {
+        return permissionMapper.findByRole(roleId);
+    }
 }

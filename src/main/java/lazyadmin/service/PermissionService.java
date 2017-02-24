@@ -13,5 +13,8 @@ public interface PermissionService {
     public Permission createPermission(Permission permission);
 
     public void deletePermission(Long permissionId);
+
     List<Permission> findAll();
+
+    List<Permission> findByRole(Long id);
 }

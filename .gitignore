@@ -297,3 +297,8 @@ target/lazyadmin/WEB-INF/views/common/sidebar.ftl
 target/lazyadmin/WEB-INF/views/common/style.ftl
 target/lazyadmin/WEB-INF/views/dashboard/detail.ftl
 target/lazyadmin/WEB-INF/views/permission/index.ftl
+target/lazyadmin/static/js/icheck.js
+target/lazyadmin/WEB-INF/views/role/detail.ftl
+target/lazyadmin/WEB-INF/views/role/index.ftl
+target/lazyadmin/WEB-INF/views/video/detail.ftl
+target/lazyadmin/WEB-INF/views/video/index.ftl

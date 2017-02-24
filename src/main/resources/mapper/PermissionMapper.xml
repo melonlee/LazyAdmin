@@ -2,9 +2,25 @@
 <!DOCTYPE mapper PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN" "http://mybatis.org/dtd/mybatis-3-mapper.dtd">
 <mapper namespace="lazyadmin.mapper.PermissionMapper">
 
+
+    <resultMap id="BaseResultMap" type="lazyadmin.entity.Permission">
+        <id column="id" property="id" jdbcType="INTEGER"/>
+        <result column="permission" property="permission" jdbcType="VARCHAR"/>
+        <result column="description" property="description" jdbcType="VARCHAR"/>
+        <result column="createdate" property="createdate" jdbcType="VARCHAR"/>
+    </resultMap>
+
     <!-- 通用查询结果列-->
     <sql id="Base_Column_List">
         id, permission,description
     </sql>
+
+
+    <select id="findByRole" resultMap="BaseResultMap">
+        select t_permission.* from  t_permission
+         left join t_role_permission on t_permission.id = t_role_permission.permission_id
+         left join t_role on t_role_permission.role_id = t_role.id
+         where t_role.id = #{roleId}
+    </select>
 
 </mapper>

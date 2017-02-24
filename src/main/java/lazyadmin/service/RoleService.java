@@ -2,6 +2,8 @@ package lazyadmin.service;
 
 import lazyadmin.entity.Role;
 
+import java.util.List;
+
 /**
  * Created by Melon on 17/2/22.
  */
@@ -26,4 +28,10 @@ public interface RoleService {
      * @param permissionIds
      */
     public void uncorrelationPermissions(Long roleId, Long... permissionIds);
+
+    List<Role> findAll();
+
+    void deletePermissionByRole(Long id);
+
+    Object findOne(Long id);
 }

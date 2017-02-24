@@ -2,25 +2,25 @@
 
 <!DOCTYPE html>
 <!--[if IE 9 ]><html class="ie9"><![endif]-->
-<#include "common/style.ftl">
+<#include "../common/style.ftl">
 
 <body id="skin-blur-violate">
 
-<#include  "common/header.ftl">
+<#include  "../common/header.ftl">
 
 <div class="clearfix"></div>
 
 <section id="main" class="p-relative" role="main">
 
     <!-- Sidebar -->
-<#include "common/sidebar.ftl">
+<#include "../common/sidebar.ftl">
 
     <!-- Content -->
     <section id="content" class="container">
 
         <!-- Messages Drawer -->
 
-    <#include "common/messages.ftl">
+    <#include "../common/messages.ftl">
 
         <h2 class="page-title">视频中心</h2>
 
@@ -76,7 +76,7 @@
     </section>
 </section>
 
-<#include "common/js.ftl">
+<#include "../common/js.ftl">
 
 <script>
 

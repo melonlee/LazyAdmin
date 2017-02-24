@@ -1,5 +1,6 @@
 package lazyadmin.entity;
 
+import com.baomidou.mybatisplus.annotations.TableField;
 import com.baomidou.mybatisplus.annotations.TableId;
 import com.baomidou.mybatisplus.annotations.TableName;
 import com.baomidou.mybatisplus.enums.IdType;
@@ -16,6 +17,10 @@ public class Role implements Serializable {
     private Long id;
     private String role; //角色标识 程序中判断使用,如"admin"
     private String description;
+    private String createdate;
+
+    @TableField(exist = false)
+    private List<Long> permissions;
 
     public Long getId() {
         return id;
@@ -39,5 +44,21 @@ public class Role implements Serializable {
 
     public void setDescription(String description) {
         this.description = description;
+    }
+
+    public String getCreatedate() {
+        return createdate;
+    }
+
+    public void setCreatedate(String createdate) {
+        this.createdate = createdate;
+    }
+
+    public List<Long> getPermissions() {
+        return permissions;
+    }
+
+    public void setPermissions(List<Long> permissions) {
+        this.permissions = permissions;
     }
 }

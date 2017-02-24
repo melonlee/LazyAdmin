@@ -27,7 +27,7 @@ public class AuthController {
             RequestMethod.GET})
     public String dashboard() {
 
-        return "index.ftl";
+        return "video/index.ftl";
 //        return "redirect:/video.html";
     }
 
@@ -40,7 +40,7 @@ public class AuthController {
     @RequestMapping(value = "detail", method = RequestMethod.GET)
     public String detail() {
 
-        return "/dashboard/detail.ftl";
+        return "video/detail.ftl";
     }
 
 }

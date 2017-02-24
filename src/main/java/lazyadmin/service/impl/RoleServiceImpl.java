@@ -1,11 +1,13 @@
 package lazyadmin.service.impl;
 
+import com.baomidou.mybatisplus.mapper.EntityWrapper;
 import lazyadmin.entity.Role;
 import lazyadmin.mapper.RoleMapper;
 import lazyadmin.service.RoleService;
 import org.springframework.stereotype.Service;
 
 import javax.annotation.Resource;
+import java.util.List;
 
 /**
  * Created by Melon on 17/2/22.
@@ -47,5 +49,17 @@ public class RoleServiceImpl implements RoleService {
         for (Long permissionId : permissionIds) {
             roleMapper.deletePermissions(roleId, permissionId);
         }
+    }
+
+    public List<Role> findAll() {
+        return roleMapper.selectList(new EntityWrapper<Role>());
+    }
+
+    public void deletePermissionByRole(Long id) {
+
+    }
+
+    public Role findOne(Long id) {
+        return roleMapper.selectById(id);
     }
 }
