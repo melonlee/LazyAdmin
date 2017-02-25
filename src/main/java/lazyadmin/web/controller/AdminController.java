@@ -4,6 +4,8 @@ import lazyadmin.entity.Admin;
 import lazyadmin.entity.Role;
 import lazyadmin.service.AdminService;
 import lazyadmin.service.RoleService;
+import org.apache.shiro.authz.annotation.RequiresPermissions;
+import org.apache.shiro.authz.annotation.RequiresRoles;
 import org.springframework.stereotype.Controller;
 import org.springframework.ui.ModelMap;
 import org.springframework.web.bind.annotation.PathVariable;
@@ -27,6 +29,8 @@ public class AdminController {
     @Resource
     private RoleService roleService;
 
+    @RequiresRoles("admin")
+    @RequiresPermissions("admin:view")
     @RequestMapping(value = "/all", method = RequestMethod.GET)
     public String all(ModelMap map) {
 
@@ -35,7 +39,7 @@ public class AdminController {
         return "/account/index.ftl";
     }
 
-
+    @RequiresPermissions("admin:create")
     @RequestMapping(value = "/create", method = RequestMethod.GET)
     public String create(ModelMap modelMap) {
         modelMap.addAttribute("admin", new Admin());
@@ -43,6 +47,7 @@ public class AdminController {
         return "/account/detail.ftl";
     }
 
+    @RequiresPermissions("admin:view")
     @RequestMapping(value = "/{id}", method = RequestMethod.GET)
     public String create(ModelMap modelMap, @PathVariable("id") Long id) {
 
@@ -52,6 +57,7 @@ public class AdminController {
         return "/account/detail.ftl";
     }
 
+    @RequiresPermissions("role:modify")
     @RequestMapping(value = "/modify", method = RequestMethod.POST)
     public String modify(Admin admin) {
 
@@ -62,15 +68,14 @@ public class AdminController {
         return "redirect:/admin/all";
     }
 
+    @RequiresPermissions("role:delete")
     @RequestMapping(value = "/delete", method = RequestMethod.GET)
     public String delete(ModelMap modelMap,
                          @RequestParam(value = "id", required = false, defaultValue = "") Long id) {
-
         //删除角色
         adminService.delete(id);
         //删除关联关系
         adminService.uncorrelationRoles(id);
-
         return "redirect:/role/all";
     }
 

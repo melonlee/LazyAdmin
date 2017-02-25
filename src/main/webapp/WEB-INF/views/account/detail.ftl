@@ -29,7 +29,7 @@
                     <div class="form-group">
                         <label for="inputName1" class="col-md-2 control-label">账户名</label>
                         <div class="col-md-10">
-                            <input type="text" class="form-control input-sm" name="role"
+                            <input type="text" class="form-control input-sm" name="username"
                                    placeholder="例如:admin" value="<#if (admin.username)??>${admin.username}</#if>">
                         </div>
                     </div>
@@ -37,8 +37,8 @@
                     <div class="form-group">
                         <label for="inputName1" class="col-md-2 control-label">账户密码</label>
                         <div class="col-md-10">
-                            <input type="text" class="form-control input-sm" name="role"
-                                   placeholder="例如:admin" value="<#if (admin.password)??>${admin.password}</#if>">
+                            <input type="text" class="form-control input-sm" name="password"
+                                   placeholder="例如:123456" value="<#if (admin.password)??>${admin.password}</#if>">
                         </div>
                     </div>
 
@@ -48,7 +48,7 @@
                         <#list roles as role>
                             <label class="checkbox-inline">
                                 <input type="checkbox" checked="checked" value="${role.id}"
-                                       name="permissions">
+                                       name="roles">
                             ${role.description}
                             </label>
                         </#list>
@@ -69,50 +69,6 @@
         </div>
     </section>
 </section>
-
-<!-- Modal Default -->
-<div class="modal fade" id="modalDefault" tabindex="-1" role="dialog" aria-hidden="true">
-    <div class="modal-dialog">
-        <div class="modal-content">
-            <div class="modal-header">
-                <button type="button" class="close" data-dismiss="modal" aria-hidden="true">&times;</button>
-                <h4 class="modal-title">编辑权限</h4>
-            </div>
-            <div class="modal-body">
-                <div class="block-area" id="horizontal">
-                    <form class="form-horizontal" role="form" method="post" action="modify">
-
-                        <input type="hidden" name="id">
-
-                        <div class="form-group">
-                            <label for="inputName1" class="col-md-2 control-label">权限代码</label>
-                            <div class="col-md-10">
-                                <input type="text" class="form-control input-sm"
-                                       placeholder="例如:user:create" name="permission">
-                            </div>
-                        </div>
-                        <div class="form-group">
-                            <label for="inputEmail1" class="col-md-2 control-label">权限描述</label>
-                            <div class="col-md-10">
-                                <input type="text" class="form-control input-sm"
-                                       placeholder="例如:新增用户" name="description">
-                            </div>
-                        </div>
-                        <br/>
-                        <div class="form-group">
-                            <div class="col-md-offset-2 col-md-10">
-                                <button type="submit" class="btn  btn-sm m-t-30">提交</button>
-                                <button type="button" class="btn btn-sm  m-t-30" data-dismiss="modal">取消</button>
-                            </div>
-                        </div>
-                    </form>
-                </div>
-            </div>
-            <div class="modal-footer">
-            </div>
-        </div>
-    </div>
-</div>
 <#include "../common/js.ftl">
 </body>
 </html>

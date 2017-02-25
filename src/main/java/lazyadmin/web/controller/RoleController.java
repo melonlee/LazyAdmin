@@ -4,6 +4,7 @@ package lazyadmin.web.controller;
 import lazyadmin.entity.Role;
 import lazyadmin.service.PermissionService;
 import lazyadmin.service.RoleService;
+import org.apache.shiro.authz.annotation.RequiresPermissions;
 import org.slf4j.Logger;
 import org.slf4j.LoggerFactory;
 import org.springframework.stereotype.Controller;
@@ -31,6 +32,8 @@ public class RoleController {
     @Resource
     private PermissionService permissionService;
 
+
+    @RequiresPermissions("role:view")
     @RequestMapping(value = "/all", method = RequestMethod.GET)
     public String all(ModelMap map) {
 
@@ -39,7 +42,7 @@ public class RoleController {
         return "/role/index.ftl";
     }
 
-
+    @RequiresPermissions("role:create")
     @RequestMapping(value = "/create", method = RequestMethod.GET)
     public String create(ModelMap modelMap) {
         modelMap.addAttribute("role", new Role());
@@ -47,6 +50,7 @@ public class RoleController {
         return "/role/detail.ftl";
     }
 
+    @RequiresPermissions("role:view")
     @RequestMapping(value = "/{id}", method = RequestMethod.GET)
     public String create(ModelMap modelMap, @PathVariable("id") Long id) {
 
@@ -56,10 +60,10 @@ public class RoleController {
         return "/role/detail.ftl";
     }
 
+    @RequiresPermissions("role:modify")
     @RequestMapping(value = "/modify", method = RequestMethod.POST)
     public String modify(ModelMap modelMap, Role role) {
 
-        logger.info(String.format("role->permission-->[%s]", role.getPermissions().size()));
         role = roleService.createRole(role);
         for (Long permissionId : role.getPermissions()) {
             roleService.correlationPermissions(role.getId(), permissionId);
@@ -67,17 +71,14 @@ public class RoleController {
         return "redirect:/role/all";
     }
 
+    @RequiresPermissions("role:delete")
     @RequestMapping(value = "/delete", method = RequestMethod.GET)
     public String delete(ModelMap modelMap,
                          @RequestParam(value = "id", required = false, defaultValue = "") Long id) {
-
-
         //删除角色
         roleService.deleteRole(id);
-
         //删除关联关系
         roleService.deletePermissionByRole(id);
-
         return "redirect:/role/all";
     }
 }

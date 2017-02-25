@@ -22,8 +22,8 @@
 
     <!-- 配置freeMarker的模板路径 -->
     <bean id="freemarkerConfig"
-          class="org.springframework.web.servlet.view.freemarker.FreeMarkerConfigurer">
-        <!--property name="freemarkerSettings" ref="freemarkerConfiguration"/ -->
+          class="lazyadmin.plugin.ShiroTagFreeMarkerConfigurer">
+        <!--<property name="freemarkerSettings" ref="freemarkerConfiguration"/>-->
         <property name="templateLoaderPath">
             <value>/WEB-INF/views/</value>
         </property>

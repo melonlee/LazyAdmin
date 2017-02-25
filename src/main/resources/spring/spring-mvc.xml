@@ -11,16 +11,22 @@
 
     <!-- 扫描控制器 -->
     <context:component-scan base-package="lazyadmin.web.controller"></context:component-scan>
-    <!-- 扫描插件,redis,cache,jsonp,aop -->
+    <context:component-scan base-package="lazyadmin.web.exception"></context:component-scan>
     <!-- 扫描包加载Service实现类 -->
     <context:component-scan base-package="lazyadmin.service"></context:component-scan>
-
+    <!-- 扫描插件,redis,cache,jsonp,aop -->
+    <context:component-scan base-package="lazyadmin.plugin.realm"></context:component-scan>
     <!-- 开启aop，对类代理-->
-    <aop:config proxy-target-class="true"/>
+
     <aop:aspectj-autoproxy proxy-target-class="true"/>
 
-    <bean class="org.springframework.validation.beanvalidation.MethodValidationPostProcessor"/>
+    <aop:config proxy-target-class="true"></aop:config>
 
+    <bean class="org.apache.shiro.spring.security.interceptor.AuthorizationAttributeSourceAdvisor">
+        <property name="securityManager" ref="securityManager"/>
+    </bean>
+
+    <bean class="org.springframework.validation.beanvalidation.MethodValidationPostProcessor"/>
 
     <!-- 静态资源映射 -->
     <mvc:resources mapping="/static/**" location="/static/"/>
@@ -52,17 +58,4 @@
         </mvc:message-converters>
     </mvc:annotation-driven>
 
-    <!--<bean id="objectMapper" class="lazyrest.common.util.CustomObjectMapper" init-method="init">-->
-    <!--&lt;!&ndash; 驼峰转为下划线 &ndash;&gt;-->
-    <!--<property name="camelCaseToLowerCaseWithUnderscores" value="false"/>-->
-    <!--<property name="dateFormatPattern" value="yyyy-MM-dd HH:mm:ss"/>-->
-    <!--</bean>-->
-
-    <!--<mvc:annotation-driven>-->
-    <!--<mvc:message-converters>-->
-    <!--<bean class="org.springframework.http.converter.json.MappingJackson2HttpMessageConverter">-->
-    <!--<property name="objectMapper" ref="objectMapper"/>-->
-    <!--</bean>-->
-    <!--</mvc:message-converters>-->
-    <!--</mvc:annotation-driven>-->
 </beans>

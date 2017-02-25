@@ -26,22 +26,19 @@
     </filter-mapping>
 
     <!-- shiro 安全过滤器 -->
-    <!--<filter>-->
-    <!--<filter-name>shiroFilter</filter-name>-->
-    <!--<filter-class>org.springframework.web.filter.DelegatingFilterProxy</filter-class>-->
-    <!--<async-supported>true</async-supported>-->
-    <!--<init-param>-->
-    <!--<param-name>targetFilterLifecycle</param-name>-->
-    <!--<param-value>true</param-value>-->
-    <!--</init-param>-->
-    <!--</filter>-->
-
-    <!--<filter-mapping>-->
-    <!--<filter-name>shiroFilter</filter-name>-->
-    <!--<url-pattern>/*</url-pattern>-->
-    <!--<dispatcher>REQUEST</dispatcher>-->
-    <!--</filter-mapping>-->
-
+    <filter>
+        <filter-name>shiroFilter</filter-name>
+        <filter-class>org.springframework.web.filter.DelegatingFilterProxy</filter-class>
+        <async-supported>true</async-supported>
+        <init-param>
+            <param-name>targetFilterLifecycle</param-name>
+            <param-value>true</param-value>
+        </init-param>
+    </filter>
+    <filter-mapping>
+        <filter-name>shiroFilter</filter-name>
+        <url-pattern>/*</url-pattern>
+    </filter-mapping>
 
     <listener>
         <listener-class>org.springframework.web.context.ContextLoaderListener</listener-class>
@@ -64,6 +61,6 @@
         <url-pattern>/</url-pattern>
     </servlet-mapping>
     <welcome-file-list>
-        <welcome-file>index.html</welcome-file>
+        <welcome-file>/auth/</welcome-file>
     </welcome-file-list>
 </web-app>

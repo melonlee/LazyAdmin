@@ -34,7 +34,7 @@
         delete from t_admin_role where admin_id = #{adminId} and role_id = #{roleId}
     </delete>
 
-    <select id="findByName" resultType="lazyadmin.entity.Admin">
+    <select id="findByName" resultMap="BaseResultMap">
         SELECT
         <include refid="Base_Column_List"/>
         from t_admin where username = #{username}
@@ -47,7 +47,7 @@
     </select>
 
     <select id="findPermissions" resultMap="permissions">
-         select permission from t_admin admin, t_role r, t_permissions p,
+         select permission from t_admin admin, t_role r, t_permission p,
          t_admin_role ar, t_role_permission rp
          where admin.username=#{username} and admin.id=ar.admin_id
          and r.id=ar.role_id and r.id=rp.role_id and p.id=rp.permission_id

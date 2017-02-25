@@ -1,9 +1,8 @@
 <#import "/spring.ftl" as spring />
 
 <!DOCTYPE html>
-<html class="ie9">
+<html>
 <#include "../common/style.ftl">
-
 <body id="skin-blur-violate">
 <#include  "../common/header.ftl">
 <div class="clearfix"></div>
@@ -18,7 +17,10 @@
         <hr class="whiter">
         <div class="block-area">
             <h2>
+            <@shiro.hasPermission name="admin:view">
                 <a href="create" class="btn btn-sm">+新增账户</a>
+            </@shiro.hasPermission>
+
             </h2>
             <hr class="whiter">
             <br/><br/>

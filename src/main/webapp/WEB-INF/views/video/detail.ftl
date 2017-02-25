@@ -64,27 +64,6 @@
                                placeholder="...">
                     </div>
                 </div>
-
-            <#--<br/>-->
-
-            <#--<div class="form-group">-->
-            <#--<label for="inputEmail1" class="col-md-2 control-label">视频文件</label>-->
-            <#--<div class="col-md-10">-->
-
-            <#--<div class="fileupload fileupload-new" data-provides="fileupload">-->
-            <#--<span class="btn btn-file btn-sm btn-alt">-->
-            <#--<span class="fileupload-new">选择视频文件</span>-->
-            <#--<span class="fileupload-exists">更换文件</span>-->
-            <#--<input type="file"/>-->
-            <#--</span>-->
-            <#--<span class="fileupload-preview"></span>-->
-            <#--<a href="#" class="close close-pic fileupload-exists" data-dismiss="fileupload">-->
-            <#--<i class="fa fa-times"></i>-->
-            <#--</a>-->
-            <#--</div>-->
-
-            <#--</div>-->
-            <#--</div>-->
                 <br/>
                 <div class="form-group">
                     <label for="inputMessage" class="col-md-2 control-label">视频描述</label>

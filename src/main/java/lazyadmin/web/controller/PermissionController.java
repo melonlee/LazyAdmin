@@ -3,6 +3,7 @@ package lazyadmin.web.controller;
 
 import lazyadmin.entity.Permission;
 import lazyadmin.service.PermissionService;
+import org.apache.shiro.authz.annotation.RequiresPermissions;
 import org.springframework.stereotype.Controller;
 import org.springframework.ui.ModelMap;
 import org.springframework.web.bind.annotation.RequestBody;
@@ -24,7 +25,7 @@ public class PermissionController {
     @Resource
     private PermissionService permissionService;
 
-
+    @RequiresPermissions("permission:view")
     @RequestMapping(value = "/all", method = RequestMethod.GET)
     public String all(ModelMap modelMap) {
 
@@ -32,8 +33,9 @@ public class PermissionController {
         return "/permission/index.ftl";
     }
 
+    @RequiresPermissions("permission:modify")
     @RequestMapping(value = "/modify", method = RequestMethod.POST)
-    public String modify(ModelMap modelMap,Permission p) {
+    public String modify(ModelMap modelMap, Permission p) {
 
         Permission per = null;
 
@@ -46,6 +48,7 @@ public class PermissionController {
         return "redirect:/permission/all";
     }
 
+    @RequiresPermissions("permission:delete")
     @RequestMapping(value = "/delete", method = RequestMethod.GET)
     public String delete(ModelMap modelMap,
                          @RequestParam(value = "id", required = false, defaultValue = "") Long id) {

@@ -10,10 +10,10 @@
             </a>
             <ul class="dropdown-menu profile-menu">
                 <li><a href="">更改密码</a> <i class="icon left">&#61903;</i><i class="icon right">&#61815;</i></li>
-                <li><a href="logout.html">退出登录</a> <i class="icon left">&#61903;</i><i class="icon right">
+                <li><a href="../auth/logout">退出登录</a> <i class="icon left">&#61903;</i><i class="icon right">
                     &#61815;</i></li>
             </ul>
-            <h4 class="m-0">admin@lazy4j.org</h4>
+            <h4 class="m-0"><@shiro.principal/></h4>
         </div>
 
         <!-- Calendar -->
