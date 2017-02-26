@@ -17,11 +17,13 @@
         <h2 class="page-title">角色管理</h2>
         <hr class="whiter">
         <div class="block-area">
-            <h2>
-                <a href="create" class="btn btn-sm">+新增角色</a>
+        <@shiro.hasPermission name="role:create">
+            <h2 class="block-title">
+                <a href="create">+新增角色</a>
             </h2>
             <hr class="whiter">
             <br/><br/>
+        </@shiro.hasPermission>
             <div class="row">
             <#if roles?exists>
                 <div class="table-responsive overflow">
@@ -42,9 +44,16 @@
                                 <td>${role.description}</td>
                                 <td>${role.role}</td>
                                 <td>${role.createdate}</td>
-                                <td><a href="${role.id}"><span class="icon">&#61952;</span></a>
-                                    &nbsp;&nbsp;&nbsp;<a href="delete?id=${role.id}"><span
-                                            class="icon">&#61918;</span></a>
+                                <td>
+                                    <@shiro.hasPermission name="role:modify">
+                                        <a href="${role.id}"><span class="icon">&#61952;</span></a>
+                                    </@shiro.hasPermission>
+                                    &nbsp;&nbsp;&nbsp;
+                                    <@shiro.hasPermission name="role:delete">
+                                        <a href="delete?id=${role.id}">
+                                            <spanclass
+                                            ="icon">&#61918;</span></a>
+                                    </@shiro.hasPermission>
                                 </td>
                             </tr>
                             </#list>

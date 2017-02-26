@@ -20,10 +20,17 @@
     <header>
         <h2>[LazyAdmin]</h2>
     </header>
-
     <div class="clearfix"></div>
+
+
     <!-- Login -->
     <form class="box tile animated active" id="box-login" method="post" action="login">
+
+    <#if error?exists>
+        <div class="alert alert-danger">
+        ${error}
+        </div>
+    </#if>
         <h2 class="m-t-0 m-b-15">Account</h2>
         <input type="text" class="login-control m-b-10" placeholder="UserName..." name="username">
         <input type="password" class="login-control" placeholder="Password..." name="password">

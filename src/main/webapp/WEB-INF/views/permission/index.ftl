@@ -1,7 +1,7 @@
 <#import "/spring.ftl" as spring />
 
 <!DOCTYPE html>
-<html class="ie9">
+<html>
 <#include "../common/style.ftl">
 
 <body id="skin-blur-violate">
@@ -17,11 +17,13 @@
         <h2 class="page-title">权限管理</h2>
         <hr class="whiter">
         <div class="block-area">
-            <h2>
-                <a data-toggle="modal" href="#modalDefault" class="btn btn-sm">+新增权限</a>
+        <@shiro.hasPermission name="permission:create">
+            <h2 class="block-title">
+                <a data-toggle="modal" href="#permission_info">+新增权限</a>
             </h2>
             <hr class="whiter">
             <br/><br/>
+        </@shiro.hasPermission>
             <div class="row">
             <#if permissions?exists>
                 <div class="table-responsive overflow">
@@ -42,9 +44,15 @@
                                 <td>${permission.description}</td>
                                 <td>${permission.permission}</td>
                                 <td>${permission.createdate}</td>
-                                <td><a href="#"><span class="icon">&#61952;</span></a>
-                                    &nbsp;&nbsp;&nbsp;<a href="delete?id=${permission.id}"><span
-                                            class="icon">&#61918;</span></a>
+                                <td>
+                                    <@shiro.hasPermission name="permission:modify">
+                                        <a href="#"><span class="icon">&#61952;</span></a>
+                                        &nbsp;&nbsp;&nbsp;
+                                    </@shiro.hasPermission>
+                                    <@shiro.hasPermission name="permission:delete">
+                                        <a href="delete?id=${permission.id}"><span
+                                                class="icon">&#61918;</span></a>
+                                    </@shiro.hasPermission>
                                 </td>
                             </tr>
                             </#list>
@@ -58,7 +66,7 @@
 </section>
 
 <!-- Modal Default -->
-<div class="modal fade" id="modalDefault" tabindex="-1" role="dialog" aria-hidden="true">
+<div class="modal fade" id="permission_info" tabindex="-1" role="dialog" aria-hidden="true">
     <div class="modal-dialog">
         <div class="modal-content">
             <div class="modal-header">

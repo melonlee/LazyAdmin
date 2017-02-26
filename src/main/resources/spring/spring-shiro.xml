@@ -107,8 +107,6 @@
         </property>
         <property name="filterChainDefinitions">
             <value>
-                <!--/static/**=anon-->
-                <!--/auth/login=anon-->
                 /admin/**= authc
                 /video/**= authc
                 /role/**= authc

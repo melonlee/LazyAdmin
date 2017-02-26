@@ -1,7 +1,6 @@
 <#import "/spring.ftl" as spring />
-
 <!DOCTYPE html>
-<html class="ie9">
+<html>
 <#include "../common/style.ftl">
 
 <body id="skin-blur-violate">
@@ -17,11 +16,6 @@
         <h2 class="page-title">角色管理</h2>
         <hr class="whiter">
         <div class="block-area">
-            <h2>
-                <a data-toggle="modal" href="#modalDefault" class="btn btn-sm">+新增角色</a>
-            </h2>
-            <hr class="whiter">
-            <br/><br/>
             <div class="block-area" id="horizontal">
                 <form class="form-horizontal" role="form" action="modify" method="post">
 

@@ -1,5 +1,4 @@
 <#import "/spring.ftl" as spring />
-
 <!DOCTYPE html>
 <html>
 <#include "../common/style.ftl">
@@ -16,11 +15,10 @@
         <h2 class="page-title">账户管理</h2>
         <hr class="whiter">
         <div class="block-area">
-            <h2>
+            <h2 class="block-title">
             <@shiro.hasPermission name="admin:view">
-                <a href="create" class="btn btn-sm">+新增账户</a>
+                <a href="create">+新增账户</a>
             </@shiro.hasPermission>
-
             </h2>
             <hr class="whiter">
             <br/><br/>
@@ -44,9 +42,15 @@
                                 <td>${admin.username}</td>
                                 <td>${admin.id}</td>
                                 <td>${admin.id}</td>
-                                <td><a href="${admin.id}"><span class="icon">&#61952;</span></a>
-                                    &nbsp;&nbsp;&nbsp;<a href="delete?id=${admin.id}"><span
-                                            class="icon">&#61918;</span></a>
+                                <td>
+                                    <@shiro.hasPermission name="admin:modify">
+                                        <a href="${admin.id}"><span class="icon">&#61952;</span></a>
+                                    </@shiro.hasPermission>
+                                    &nbsp;&nbsp;&nbsp;
+                                    <@shiro.hasPermission name="admin:delete">
+                                        <a href="delete?id=${admin.id}"><span
+                                                class="icon">&#61918;</span></a>
+                                    </@shiro.hasPermission>
                                 </td>
                             </tr>
                             </#list>

@@ -1,6 +1,7 @@
 package lazyadmin.web.controller;
 
 
+import lazyadmin.entity.Admin;
 import org.apache.shiro.SecurityUtils;
 import org.apache.shiro.authc.IncorrectCredentialsException;
 import org.apache.shiro.authc.LockedAccountException;
@@ -8,6 +9,7 @@ import org.apache.shiro.authc.UnknownAccountException;
 import org.apache.shiro.authc.UsernamePasswordToken;
 import org.springframework.stereotype.Controller;
 import org.springframework.ui.Model;
+import org.springframework.ui.ModelMap;
 import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.bind.annotation.RequestMethod;
 
@@ -20,48 +22,30 @@ import javax.servlet.http.HttpServletRequest;
 @RequestMapping("/auth")
 public class AuthController {
 
-    /**
-     * 跳转至登录页面
-     *
-     * @return
-     */
-    @RequestMapping(method = RequestMethod.GET)
-    public String index() {
 
+    @RequestMapping(method = {
+            RequestMethod.GET})
+    public String view() {
         return "login.ftl";
     }
 
     @RequestMapping(value = "/login", method = {
             RequestMethod.POST})
-    public String dashboard(HttpServletRequest req, Model model) {
+    public String dashboard(ModelMap map, Admin admin) {
         String error = null;
-        UsernamePasswordToken token = new UsernamePasswordToken(req.getParameter("username"), req.getParameter("password"));
+        UsernamePasswordToken token = new UsernamePasswordToken(admin.getUsername(), admin.getPassword());
         token.setRememberMe(false);
         try {
             SecurityUtils.getSubject().login(token);
-            error = "用户名ok";
+            return "redirect:/video/all";
         } catch (UnknownAccountException uae) {
-            error = "用户名/密码错误";
+            error = "用户名错误!";
         } catch (IncorrectCredentialsException ice) {
-            error = "用户名/密码错误";
+            error = "密码错误!";
         } catch (LockedAccountException lae) {
-            error = "用户名/密码错误";
+            error = "用户被锁定!";
         }
-        model.addAttribute("error", error);
-        System.out.println("------------------------------>>>>>>>>>>>>>>>>>>>>>>>>>>>>" + error);
-        return "redirect:/admin/all";
-    }
-
-    @RequestMapping(value = "logout", method = RequestMethod.GET)
-    public String logout() {
-
+        map.addAttribute("error", error);
         return "login.ftl";
     }
-
-    @RequestMapping(value = "detail", method = RequestMethod.GET)
-    public String detail() {
-
-        return "video/detail.ftl";
-    }
-
 }

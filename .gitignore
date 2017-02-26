@@ -333,3 +333,16 @@ target/lazyadmin/WEB-INF/lib/shiro-quartz-1.2.2.jar
 target/lazyadmin/WEB-INF/lib/shiro-spring-1.2.2.jar
 target/lazyadmin/WEB-INF/lib/shiro-web-1.2.2.jar
 target/lazyadmin/WEB-INF/views/common/error.ftl
+target/classes/lazyadmin/entity/Video.class
+target/classes/lazyadmin/mapper/VideoMapper.class
+target/classes/lazyadmin/service/VideoService.class
+target/classes/lazyadmin/service/impl/VideoServiceImpl.class
+target/classes/lazyadmin/web/controller/VideoController.class
+target/classes/mapper/VideoMapper.xml
+target/lazyadmin/static/img/header.jpg
+target/lazyadmin/WEB-INF/classes/lazyadmin/entity/Video.class
+target/lazyadmin/WEB-INF/classes/lazyadmin/mapper/VideoMapper.class
+target/lazyadmin/WEB-INF/classes/lazyadmin/service/VideoService.class
+target/lazyadmin/WEB-INF/classes/lazyadmin/service/impl/VideoServiceImpl.class
+target/lazyadmin/WEB-INF/classes/lazyadmin/web/controller/VideoController.class
+target/lazyadmin/WEB-INF/classes/mapper/VideoMapper.xml
