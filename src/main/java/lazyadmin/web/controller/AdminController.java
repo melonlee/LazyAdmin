@@ -76,7 +76,7 @@ public class AdminController {
         adminService.delete(id);
         //删除关联关系
         adminService.uncorrelationRoles(id);
-        return "redirect:/role/all";
+        return "redirect:/admin/all";
     }
 
 }

@@ -1,6 +1,7 @@
 package lazyadmin.web.controller;
 
 
+import lazyadmin.entity.Permission;
 import lazyadmin.entity.Role;
 import lazyadmin.service.PermissionService;
 import lazyadmin.service.RoleService;
@@ -55,8 +56,15 @@ public class RoleController {
     public String create(ModelMap modelMap, @PathVariable("id") Long id) {
 
         modelMap.addAttribute("role", roleService.findOne(id));
-        modelMap.addAttribute("permissions", permissionService.findByRole(id));
+        List<Permission> permissions = permissionService.findByRole(id);
+        List<Permission> allPermissions = permissionService.findAll();
+        //对比
 
+        for (Permission permission : allPermissions) {
+
+        }
+
+        modelMap.addAttribute("permissions", permissions);
         return "/role/detail.ftl";
     }
 

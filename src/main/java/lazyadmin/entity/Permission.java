@@ -1,5 +1,6 @@
 package lazyadmin.entity;
 
+import com.baomidou.mybatisplus.annotations.TableField;
 import com.baomidou.mybatisplus.annotations.TableId;
 import com.baomidou.mybatisplus.annotations.TableName;
 import com.baomidou.mybatisplus.enums.IdType;
@@ -17,6 +18,9 @@ public class Permission implements Serializable {
     private String permission; //权限标识 程序中判断使用,如"user:create"
     private String description;
     private String createdate;
+
+    @TableField(exist = false)
+    private boolean selected = false;
 
     public Long getId() {
         return id;
@@ -48,5 +52,13 @@ public class Permission implements Serializable {
 
     public void setCreatedate(String createdate) {
         this.createdate = createdate;
+    }
+
+    public boolean isSelected() {
+        return selected;
+    }
+
+    public void setSelected(boolean selected) {
+        this.selected = selected;
     }
 }

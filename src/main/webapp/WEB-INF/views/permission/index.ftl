@@ -19,7 +19,7 @@
         <div class="block-area">
         <@shiro.hasPermission name="permission:create">
             <h2 class="block-title">
-                <a data-toggle="modal" href="#permission_info">+新增权限</a>
+                <a id="modal" data-toggle="modal" href="#permission_info">+新增权限</a>
             </h2>
             <hr class="whiter">
             <br/><br/>
@@ -46,7 +46,7 @@
                                 <td>${permission.createdate}</td>
                                 <td>
                                     <@shiro.hasPermission name="permission:modify">
-                                        <a href="#"><span class="icon">&#61952;</span></a>
+                                        <a class="modify" href="#"><span class="icon">&#61952;</span></a>
                                         &nbsp;&nbsp;&nbsp;
                                     </@shiro.hasPermission>
                                     <@shiro.hasPermission name="permission:delete">
@@ -64,8 +64,6 @@
         </div>
     </section>
 </section>
-
-<!-- Modal Default -->
 <div class="modal fade" id="permission_info" tabindex="-1" role="dialog" aria-hidden="true">
     <div class="modal-dialog">
         <div class="modal-content">
@@ -77,19 +75,19 @@
                 <div class="block-area" id="horizontal">
                     <form class="form-horizontal" role="form" method="post" action="modify">
 
-                        <input type="hidden" name="id">
+                        <input type="hidden" name="id" id="id">
 
                         <div class="form-group">
                             <label for="inputName1" class="col-md-2 control-label">权限代码</label>
                             <div class="col-md-10">
-                                <input type="text" class="form-control input-sm"
+                                <input type="text" class="form-control input-sm" id="permission"
                                        placeholder="例如:user:create" name="permission">
                             </div>
                         </div>
                         <div class="form-group">
                             <label for="inputEmail1" class="col-md-2 control-label">权限描述</label>
                             <div class="col-md-10">
-                                <input type="text" class="form-control input-sm"
+                                <input type="text" class="form-control input-sm" id="description"
                                        placeholder="例如:新增用户" name="description">
                             </div>
                         </div>
@@ -109,5 +107,14 @@
     </div>
 </div>
 <#include "../common/js.ftl">
+<script type="text/javascript">
+    $(".modify").click(function () {
+        var $tds = $(this).parents('tr').find('td');
+        $("#id").val($tds.eq(0).text());
+        $("#description").val($tds.eq(1).text());
+        $("#permission").val($tds.eq(2).text());
+        $("#modal").click();
+    });
+</script>
 </body>
 </html>

@@ -51,8 +51,7 @@
                                     &nbsp;&nbsp;&nbsp;
                                     <@shiro.hasPermission name="role:delete">
                                         <a href="delete?id=${role.id}">
-                                            <spanclass
-                                            ="icon">&#61918;</span></a>
+                                            <span class="icon">&#61918;</span></a>
                                     </@shiro.hasPermission>
                                 </td>
                             </tr>

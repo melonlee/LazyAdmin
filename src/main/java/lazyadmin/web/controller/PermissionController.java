@@ -41,6 +41,7 @@ public class PermissionController {
 
         if (null != p.getId()) {
 
+            permissionService.updatePermission(p);
         } else {
             permissionService.createPermission(p);
         }

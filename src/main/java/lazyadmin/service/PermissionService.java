@@ -17,4 +17,6 @@ public interface PermissionService {
     List<Permission> findAll();
 
     List<Permission> findByRole(Long id);
+
+    void updatePermission(Permission p);
 }
