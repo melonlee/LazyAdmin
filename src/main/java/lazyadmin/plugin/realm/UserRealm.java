@@ -7,6 +7,7 @@ import org.apache.shiro.authz.AuthorizationInfo;
 import org.apache.shiro.authz.SimpleAuthorizationInfo;
 import org.apache.shiro.realm.AuthorizingRealm;
 import org.apache.shiro.subject.PrincipalCollection;
+import org.apache.shiro.util.ByteSource;
 
 import javax.annotation.Resource;
 
@@ -18,6 +19,12 @@ public class UserRealm extends AuthorizingRealm {
     @Resource
     private AdminService adminService;
 
+    /**
+     * 对用户权限进行判定
+     *
+     * @param principals
+     * @return
+     */
     @Override
     protected AuthorizationInfo doGetAuthorizationInfo(PrincipalCollection principals) {
         String username = (String) principals.getPrimaryPrincipal();
@@ -27,6 +34,13 @@ public class UserRealm extends AuthorizingRealm {
         return authorizationInfo;
     }
 
+    /**
+     * 对用户基本信息进行判定
+     *
+     * @param token
+     * @return
+     * @throws AuthenticationException
+     */
     @Override
     protected AuthenticationInfo doGetAuthenticationInfo(AuthenticationToken token) throws AuthenticationException {
         String username = (String) token.getPrincipal();
@@ -38,6 +52,7 @@ public class UserRealm extends AuthorizingRealm {
         SimpleAuthenticationInfo authenticationInfo = new SimpleAuthenticationInfo(
                 admin.getUsername(), //用户名
                 admin.getPassword(),
+                ByteSource.Util.bytes(admin.getCredentialsSalt()),
                 getName()  //realm name
         );
         return authenticationInfo;

@@ -20,7 +20,7 @@ public class Permission implements Serializable {
     private String createdate;
 
     @TableField(exist = false)
-    private boolean selected = false;
+    private int selected = 0; //供前端判断是否含有该权限使用
 
     public Long getId() {
         return id;
@@ -54,11 +54,11 @@ public class Permission implements Serializable {
         this.createdate = createdate;
     }
 
-    public boolean isSelected() {
+    public int getSelected() {
         return selected;
     }
 
-    public void setSelected(boolean selected) {
+    public void setSelected(int selected) {
         this.selected = selected;
     }
 }

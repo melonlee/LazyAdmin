@@ -57,13 +57,6 @@ public class RoleController {
 
         modelMap.addAttribute("role", roleService.findOne(id));
         List<Permission> permissions = permissionService.findByRole(id);
-        List<Permission> allPermissions = permissionService.findAll();
-        //对比
-
-        for (Permission permission : allPermissions) {
-
-        }
-
         modelMap.addAttribute("permissions", permissions);
         return "/role/detail.ftl";
     }
@@ -71,10 +64,18 @@ public class RoleController {
     @RequiresPermissions("role:modify")
     @RequestMapping(value = "/modify", method = RequestMethod.POST)
     public String modify(ModelMap modelMap, Role role) {
+        if (null != role.getId()) {
+            role = roleService.updateRole(role);
+            //删除关联关系
+            roleService.deletePermissionByRole(role.getId());
+        } else {
+            role = roleService.createRole(role);
+        }
 
-        role = roleService.createRole(role);
-        for (Long permissionId : role.getPermissions()) {
-            roleService.correlationPermissions(role.getId(), permissionId);
+        if (null != role && role.getPermissions().size() > 0) {
+            for (Long permissionId : role.getPermissions()) {
+                roleService.correlationPermissions(role.getId(), permissionId);
+            }
         }
         return "redirect:/role/all";
     }

@@ -3,6 +3,7 @@ package lazyadmin.service.impl;
 import com.baomidou.mybatisplus.mapper.EntityWrapper;
 import lazyadmin.entity.Admin;
 import lazyadmin.mapper.AdminMapper;
+import lazyadmin.plugin.PasswordHelper;
 import lazyadmin.service.AdminService;
 import org.springframework.stereotype.Service;
 
@@ -22,7 +23,11 @@ public class AdminServiceImpl implements AdminService {
     @Resource
     private AdminMapper adminMapper;
 
+    @Resource
+    private PasswordHelper passwordHelper;
+
     public Admin createAdmin(Admin admin) {
+        passwordHelper.encryptPassword(admin);
         adminMapper.insert(admin);
         return admin;
     }
@@ -45,14 +50,8 @@ public class AdminServiceImpl implements AdminService {
         }
     }
 
-    public void uncorrelationRoles(Long adminId, Long... roleIds) {
-        if (null == roleIds && roleIds.length == 0) {
-            return;
-        }
-        for (Long roleId : roleIds) {
-            adminMapper.deleteRoles(adminId, roleId);
-        }
-
+    public void uncorrelationRoles(Long adminId) {
+        adminMapper.deleteRoles(adminId);
     }
 
     public Admin findByUsername(String username) {
@@ -82,10 +81,11 @@ public class AdminServiceImpl implements AdminService {
         adminMapper.deleteById(id);
     }
 
-    private boolean check(Long roleId, Long permissionId) {
-//        Integer count = adminMapper.findCountByRoleAndPermission(roleId,permissionId);
-//        String sql = "select count(1) from t_roles_permissions where role_id=? and permission_id=?";
-        return false;
+    public Admin updateAdmin(Admin admin) {
+        passwordHelper.encryptPassword(admin);
+        adminMapper.updateById(admin);
+        return admin;
     }
+
 
 }

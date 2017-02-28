@@ -1,9 +1,7 @@
 <#import "/spring.ftl" as spring />
-
 <!DOCTYPE html>
 <html>
 <#include "../common/style.ftl">
-
 <body id="skin-blur-violate">
 <#include  "../common/header.ftl">
 <div class="clearfix"></div>

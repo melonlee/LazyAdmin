@@ -14,7 +14,7 @@ public interface AdminMapper extends BaseMapper<Admin> {
 
     void insertRoles(@Param(value = "adminId") Long adminId, @Param(value = "roleId") Long roleId);
 
-    void deleteRoles(@Param(value = "adminId") Long adminId, @Param(value = "roleId") Long roleIds);
+    void deleteRoles(@Param(value = "adminId") Long adminId);
 
     Admin findByName(@Param(value = "username") String username);
 

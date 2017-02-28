@@ -12,8 +12,6 @@
     <link href="<@spring.url '/static/css/style.css'/>" rel="stylesheet">
     <link href="<@spring.url '/static/css/animate.css'/>" rel="stylesheet">
     <link href="<@spring.url '/static/css/generics.css'/>" rel="stylesheet">
-
-
 </head>
 <body id="skin-blur-violate">
 <section id="login">
@@ -21,11 +19,8 @@
         <h2>[LazyAdmin]</h2>
     </header>
     <div class="clearfix"></div>
-
-
     <!-- Login -->
     <form class="box tile animated active" id="box-login" method="post" action="login">
-
     <#if error?exists>
         <div class="alert alert-danger">
         ${error}
@@ -37,14 +32,9 @@
         <br/> <br/> <br/>
         <button type="submit" class="btn btn-sm m-r-5">Login</button>
     </form>
-
 </section>
-
-<!-- jQuery -->
 <script src="<@spring.url '/static/js/jquery.min.js'/>"></script>
-<!-- Bootstrap -->
 <script src="<@spring.url '/static/js/bootstrap.min.js'/>"></script>
-<!-- All JS functions -->
 <script src="<@spring.url '/static/js/functions.js'/>"></script>
 </body>
 </html>

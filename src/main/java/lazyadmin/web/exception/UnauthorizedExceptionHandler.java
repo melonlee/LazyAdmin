@@ -7,6 +7,7 @@ import org.springframework.web.context.request.NativeWebRequest;
 import org.springframework.web.servlet.ModelAndView;
 
 /**
+ * 设置权限异常时的处理
  * Created by Melon on 17/2/26.
  */
 

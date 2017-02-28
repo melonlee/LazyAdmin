@@ -6,8 +6,7 @@
     <resultMap id="BaseResultMap" type="lazyadmin.entity.Permission">
         <id column="id" property="id" jdbcType="INTEGER"/>
         <result column="permission" property="permission" jdbcType="VARCHAR"/>
-        <result column="description" property="description" jdbcType="VARCHAR"/>
-        <result column="createdate" property="createdate" jdbcType="VARCHAR"/>
+        <result column="selected" property="selected" jdbcType="INTEGER"/>
     </resultMap>
 
     <!-- 通用查询结果列-->
@@ -17,10 +16,11 @@
 
 
     <select id="findByRole" resultMap="BaseResultMap">
-        select t_permission.* from  t_permission
-         left join t_role_permission on t_permission.id = t_role_permission.permission_id
-         left join t_role on t_role_permission.role_id = t_role.id
-         where t_role.id = #{roleId}
+        select p.*
+        from ( (SELECT t_permission.*,1 as selected from t_permission left join t_role_permission on t_permission.id =
+        t_role_permission.permission_id where t_role_permission.role_id = #{roleId} )
+        UNION ALL
+        (SELECT t_permission.*,0 as selected from t_permission ) ) as p group by p.permission order by p.id
     </select>
 
 </mapper>

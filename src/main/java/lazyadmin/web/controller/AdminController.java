@@ -53,17 +53,23 @@ public class AdminController {
 
         modelMap.addAttribute("admin", adminService.findOne(id));
         modelMap.addAttribute("roles", roleService.findByAdmin(id));
-
         return "/account/detail.ftl";
     }
 
     @RequiresPermissions("role:modify")
     @RequestMapping(value = "/modify", method = RequestMethod.POST)
     public String modify(Admin admin) {
-
-        admin = adminService.createAdmin(admin);
-        for (Long roleId : admin.getRoles()) {
-            adminService.correlationRoles(admin.getId(), roleId);
+        if (null != admin.getId()) {
+            admin = adminService.updateAdmin(admin);
+            //删除关联关系
+            adminService.uncorrelationRoles(admin.getId());
+        } else {
+            admin = adminService.createAdmin(admin);
+        }
+        if (null != admin.getId() && admin.getRoles().size() > 0) {
+            for (Long roleId : admin.getRoles()) {
+                adminService.correlationRoles(admin.getId(), roleId);
+            }
         }
         return "redirect:/admin/all";
     }

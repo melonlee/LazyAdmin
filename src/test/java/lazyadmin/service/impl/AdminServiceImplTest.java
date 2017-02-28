@@ -4,11 +4,8 @@ import lazyadmin.entity.Admin;
 import lazyadmin.service.AdminService;
 import org.junit.Ignore;
 import org.junit.Test;
-import org.junit.runner.RunWith;
 import org.slf4j.Logger;
 import org.slf4j.LoggerFactory;
-import org.springframework.test.context.ContextConfiguration;
-import org.springframework.test.context.junit4.SpringJUnit4ClassRunner;
 
 import javax.annotation.Resource;
 
@@ -17,15 +14,11 @@ import javax.annotation.Resource;
  * Created by Melon on 17/2/22.
  */
 
-@RunWith(SpringJUnit4ClassRunner.class)
-@ContextConfiguration(locations = {"classpath:/spring/spring-*.xml"})
-public class AdminServiceImplTest {
+
+public class AdminServiceImplTest extends BaseTest {
 
     @Resource
     private AdminService adminService;
-
-    public final Logger logger = LoggerFactory.getLogger(AdminServiceImplTest.class);
-
 
     @Ignore
     public void testCorrelationRoles() throws Exception {

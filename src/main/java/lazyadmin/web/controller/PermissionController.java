@@ -36,16 +36,11 @@ public class PermissionController {
     @RequiresPermissions("permission:modify")
     @RequestMapping(value = "/modify", method = RequestMethod.POST)
     public String modify(ModelMap modelMap, Permission p) {
-
-        Permission per = null;
-
         if (null != p.getId()) {
-
             permissionService.updatePermission(p);
         } else {
             permissionService.createPermission(p);
         }
-        modelMap.addAttribute("permission", per);
         return "redirect:/permission/all";
     }
 
@@ -53,7 +48,6 @@ public class PermissionController {
     @RequestMapping(value = "/delete", method = RequestMethod.GET)
     public String delete(ModelMap modelMap,
                          @RequestParam(value = "id", required = false, defaultValue = "") Long id) {
-
         permissionService.deletePermission(id);
         return "redirect:/permission/all";
     }

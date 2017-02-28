@@ -1,50 +1,25 @@
 <#import "/spring.ftl" as spring />
-
 <!DOCTYPE html>
-<!--[if IE 9 ]><html class="ie9"><![endif]-->
+<html>
 <#include "../common/style.ftl">
-
 <body id="skin-blur-violate">
-
 <#include  "../common/header.ftl">
-
 <div class="clearfix"></div>
-
 <section id="main" class="p-relative" role="main">
-
     <!-- Sidebar -->
 <#include "../common/sidebar.ftl">
-
     <!-- Content -->
     <section id="content" class="container">
-
         <!-- Messages Drawer -->
-
     <#include "../common/messages.ftl">
-
         <h2 class="page-title">视频中心</h2>
-
         <hr class="whiter">
-
         <div class="block-area" id="horizontal">
             <h3 class="block-title">视频信息编辑</h3>
-
-
             <form class="form-horizontal" role="form" action="modify.html" method="post">
-
-
             <#if (video.id)??>
                 <input type="hidden" value="${video.id}" name="id">
             </#if>
-                <div class="form-group">
-                    <label for="inputName1" class="col-md-2 control-label">视频标题</label>
-                    <div class="col-md-10">
-                        <input type="text" class="form-control input-sm" value="${(video.title)!""}" name="title"
-                               placeholder="...">
-                    </div>
-                </div>
-                <br/>
-
             <#if (video.url)??>
                 <div class="form-group">
 
@@ -56,7 +31,14 @@
                     </div>
                 </div>
             </#if>
-
+                <div class="form-group">
+                    <label for="inputName1" class="col-md-2 control-label">视频标题</label>
+                    <div class="col-md-10">
+                        <input type="text" class="form-control input-sm" value="${(video.title)!""}" name="title"
+                               placeholder="...">
+                    </div>
+                </div>
+                <br/>
                 <div class="form-group">
                     <label for="inputName1" class="col-md-2 control-label">CDN地址</label>
                     <div class="col-md-10">

@@ -1,9 +1,7 @@
 <#import "/spring.ftl" as spring />
-
 <!DOCTYPE html>
 <html>
 <#include "../common/style.ftl">
-
 <body id="skin-blur-violate">
 <#include  "../common/header.ftl">
 <div class="clearfix"></div>
@@ -18,6 +16,7 @@
         <hr class="whiter">
         <div class="block-area">
             <div class="block-area" id="horizontal">
+                <h3 class="block-title">账户信息编辑</h3>
                 <form class="form-horizontal" role="form" action="modify" method="post">
                     <input type="hidden" name="id" value="<#if (admin.id)??>${admin.id}</#if>">
                     <div class="form-group">
@@ -41,7 +40,9 @@
                         <div class="col-md-10">
                         <#list roles as role>
                             <label class="checkbox-inline">
-                                <input type="checkbox" checked="checked" value="${role.id}"
+                                <input type="checkbox" <#if role.selected==1>
+                                       checked="checked"
+                                </#if> value="${role.id}"
                                        name="roles">
                             ${role.description}
                             </label>

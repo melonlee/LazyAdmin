@@ -27,10 +27,15 @@
     <!-- Side Menu -->
     <ul class="list-unstyled side-menu">
     <@shiro.hasPermission name="video:view">
-        <li class="active">
-            <a class="sa-side-home" href="../video/all">
+        <li class="dropdown">
+            <a class="sa-side-photos" href="">
                 <span class="menu-item">视频管理</span>
             </a>
+            <ul class="list-unstyled menu-item">
+                <li><a href="../video/create">新增视频</a></li>
+                <li><a href="../video/all">视频列表</a></li>
+            </ul>
+
         </li>
     </@shiro.hasPermission>
     <@shiro.hasPermission name="admin:view">
@@ -55,15 +60,15 @@
         </li>
     </@shiro.hasPermission>
 
-    <#--<li class="dropdown">-->
-    <#--<a class="sa-side-photos" href="">-->
-    <#--<span class="menu-item">系统管理</span>-->
-    <#--</a>-->
-    <#--<ul class="list-unstyled menu-item">-->
-    <#--<li><a href="#">系统1</a></li>-->
-    <#--<li><a href="#">系统2</a></li>-->
-    <#--</ul>-->
-    <#--</li>-->
+        <li class="dropdown">
+            <a class="sa-side-photos" href="">
+                <span class="menu-item">系统管理</span>
+            </a>
+            <ul class="list-unstyled menu-item">
+                <li><a href="#">系统1</a></li>
+                <li><a href="#">系统2</a></li>
+            </ul>
+        </li>
     </ul>
 
 </aside>

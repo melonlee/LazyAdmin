@@ -30,7 +30,6 @@
                         <tr>
                             <th>No.</th>
                             <th>账户名称</th>
-                            <th>账户角色</th>
                             <th>创建时间</th>
                             <th>操作</th>
                         </tr>
@@ -40,8 +39,7 @@
                             <tr>
                                 <td>${admin.id}</td>
                                 <td>${admin.username}</td>
-                                <td>${admin.id}</td>
-                                <td>${admin.id}</td>
+                                <td>${admin.createdate}</td>
                                 <td>
                                     <@shiro.hasPermission name="admin:modify">
                                         <a href="${admin.id}"><span class="icon">&#61952;</span></a>

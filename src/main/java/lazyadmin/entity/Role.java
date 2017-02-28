@@ -22,6 +22,9 @@ public class Role implements Serializable {
     @TableField(exist = false)
     private List<Long> permissions;
 
+    @TableField(exist = false)
+    private int selected = 0;
+
     public Long getId() {
         return id;
     }
@@ -60,5 +63,13 @@ public class Role implements Serializable {
 
     public void setPermissions(List<Long> permissions) {
         this.permissions = permissions;
+    }
+
+    public int getSelected() {
+        return selected;
+    }
+
+    public void setSelected(int selected) {
+        this.selected = selected;
     }
 }

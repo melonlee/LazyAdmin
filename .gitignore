@@ -346,3 +346,9 @@ target/lazyadmin/WEB-INF/classes/lazyadmin/service/VideoService.class
 target/lazyadmin/WEB-INF/classes/lazyadmin/service/impl/VideoServiceImpl.class
 target/lazyadmin/WEB-INF/classes/lazyadmin/web/controller/VideoController.class
 target/lazyadmin/WEB-INF/classes/mapper/VideoMapper.xml
+target/classes/lazyadmin/plugin/PasswordHelper.class
+target/classes/lazyadmin/plugin/realm/AdminHashedCredentialsMatcher.class
+target/lazyadmin/WEB-INF/classes/lazyadmin/plugin/PasswordHelper.class
+target/lazyadmin/WEB-INF/classes/lazyadmin/plugin/realm/AdminHashedCredentialsMatcher.class
+target/test-classes/lazyadmin/service/impl/BaseTest.class
+target/test-classes/lazyadmin/service/impl/PermissionServiceImplTest.class

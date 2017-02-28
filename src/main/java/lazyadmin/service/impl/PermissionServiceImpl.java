@@ -4,6 +4,7 @@ import com.baomidou.mybatisplus.mapper.EntityWrapper;
 import lazyadmin.entity.Permission;
 import lazyadmin.mapper.PermissionMapper;
 import lazyadmin.service.PermissionService;
+import org.apache.ibatis.annotations.Param;
 import org.springframework.stereotype.Service;
 
 import javax.annotation.Resource;
@@ -31,7 +32,7 @@ public class PermissionServiceImpl implements PermissionService {
         return permissionMapper.selectList(new EntityWrapper<Permission>());
     }
 
-    public List<Permission> findByRole(Long roleId) {
+    public List<Permission> findByRole(@Param(value = "roleId") Long roleId) {
         return permissionMapper.findByRole(roleId);
     }
 

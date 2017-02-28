@@ -15,7 +15,7 @@
     <!-- 扫描包加载Service实现类 -->
     <context:component-scan base-package="lazyadmin.service"></context:component-scan>
     <!-- 扫描插件,redis,cache,jsonp,aop -->
-    <context:component-scan base-package="lazyadmin.plugin.realm"></context:component-scan>
+    <context:component-scan base-package="lazyadmin.plugin"></context:component-scan>
     <!-- 开启aop，对类代理-->
 
     <aop:aspectj-autoproxy proxy-target-class="true"/>

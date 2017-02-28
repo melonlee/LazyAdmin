@@ -14,13 +14,13 @@ import java.util.List;
 @TableName("t_admin")
 public class Admin implements Serializable {
 
-
     @TableId(type = IdType.AUTO)
     private Long id;
     private String username;
     private String password;
-    private Boolean locked = Boolean.FALSE;
     private String salt;
+    private String createdate;
+
     @TableField(exist = false)
     private List<Long> roles;
 
@@ -48,14 +48,6 @@ public class Admin implements Serializable {
         this.password = password;
     }
 
-    public Boolean getLocked() {
-        return locked;
-    }
-
-    public void setLocked(Boolean locked) {
-        this.locked = locked;
-    }
-
     public String getSalt() {
         return salt;
     }
@@ -72,14 +64,27 @@ public class Admin implements Serializable {
         this.roles = roles;
     }
 
+    public String getCreatedate() {
+        return createdate;
+    }
+
+    public void setCreatedate(String createdate) {
+        this.createdate = createdate;
+    }
+
+    public String getCredentialsSalt() {
+        return username + salt;
+    }
+
     @Override
     public String toString() {
         return "Admin{" +
                 "id=" + id +
                 ", username='" + username + '\'' +
                 ", password='" + password + '\'' +
-                ", locked=" + locked +
                 ", salt='" + salt + '\'' +
                 '}';
     }
+
+
 }

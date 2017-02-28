@@ -56,14 +56,19 @@ public class RoleServiceImpl implements RoleService {
     }
 
     public void deletePermissionByRole(Long id) {
-
+        roleMapper.deletePermissionByRole(id);
     }
 
     public Role findOne(Long id) {
         return roleMapper.selectById(id);
     }
 
-    public List<Role> findByAdmin(Long id) {
-        return null;
+    public List<Role> findByAdmin(Long adminId) {
+        return roleMapper.findByAdmin(adminId);
+    }
+
+    public Role updateRole(Role role) {
+        roleMapper.updateById(role);
+        return role;
     }
 }

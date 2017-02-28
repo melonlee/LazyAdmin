@@ -7,6 +7,8 @@ import org.springframework.web.servlet.view.freemarker.FreeMarkerConfigurer;
 import java.io.IOException;
 
 /**
+ * 设置Freemarker支持shiro标签
+ * <p/>
  * Created by Melon on 17/2/25.
  */
 public class ShiroTagFreeMarkerConfigurer extends FreeMarkerConfigurer {
