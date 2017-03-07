@@ -352,3 +352,5 @@ target/lazyadmin/WEB-INF/classes/lazyadmin/plugin/PasswordHelper.class
 target/lazyadmin/WEB-INF/classes/lazyadmin/plugin/realm/AdminHashedCredentialsMatcher.class
 target/test-classes/lazyadmin/service/impl/BaseTest.class
 target/test-classes/lazyadmin/service/impl/PermissionServiceImplTest.class
+target/lazyadmin.war
+target/maven-archiver/pom.properties

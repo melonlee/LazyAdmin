@@ -5,8 +5,8 @@
     <meta charset="UTF-8">
     <title>LazyAdmin</title>
     <!-- CSS -->
-    <link href="<@spring.url '/static/css/bootstrap.min.css'/>" rel="stylesheet">
     <link href="<@spring.url '/static/css/animate.min.css'/>" rel="stylesheet">
+    <link href="<@spring.url '/static/css/bootstrap.min.css'/>" rel="stylesheet">
     <link href="<@spring.url '/static/css/font-awesome.min.css'/>" rel="stylesheet">
     <link href="<@spring.url '/static/css/form.css'/>" rel="stylesheet">
     <link href="<@spring.url '/static/css/calendar.css'/>" rel="stylesheet">

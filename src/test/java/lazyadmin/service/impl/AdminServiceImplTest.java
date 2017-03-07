@@ -20,12 +20,10 @@ public class AdminServiceImplTest extends BaseTest {
     @Resource
     private AdminService adminService;
 
-    @Ignore
     public void testCorrelationRoles() throws Exception {
         adminService.correlationRoles(1L, 11L, 23L, 34L);
     }
 
-    @Ignore
     public void testCreateAdmin() throws Exception {
 
         Admin admin = new Admin();
@@ -36,29 +34,24 @@ public class AdminServiceImplTest extends BaseTest {
 
     }
 
-    @Ignore
     public void testChangePassword() throws Exception {
 
     }
 
-    @Ignore
     public void testUncorrelationRoles() throws Exception {
 
     }
 
-    @Ignore
     public void testFindByUsername() throws Exception {
 
         logger.info(String.format("the name is [%s]", adminService.findByUsername("melon")));
     }
 
-    @Test
     public void testFindRoles() throws Exception {
 
         logger.info(String.format("the role is [%s]", adminService.findRoles("melon")));
     }
 
-    @Ignore
     public void testFindPermissions() throws Exception {
 
     }

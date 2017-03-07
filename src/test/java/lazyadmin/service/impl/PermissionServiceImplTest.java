@@ -1,6 +1,7 @@
 package lazyadmin.service.impl;
 
 import lazyadmin.mapper.PermissionMapper;
+import org.junit.Ignore;
 import org.junit.Test;
 
 import javax.annotation.Resource;
