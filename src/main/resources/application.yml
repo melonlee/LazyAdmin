@@ -1,0 +1,187 @@
+server:
+  port: 8080
+  servlet:
+    context-path: /admin
+  tomcat:
+    uri-encoding: UTF-8
+
+spring:
+  # 应用名称
+  application:
+    name: lazy-admin
+  
+  # 数据源配置
+  datasource:
+    type: com.zaxxer.hikari.HikariDataSource
+    driver-class-name: com.mysql.cj.jdbc.Driver
+    url: jdbc:mysql://localhost:3306/lazy_admin?useUnicode=true&characterEncoding=utf8&useSSL=false&serverTimezone=UTC&allowPublicKeyRetrieval=true
+    username: root
+    password: root
+    hikari:
+      minimum-idle: 5
+      maximum-pool-size: 20
+      auto-commit: true
+      idle-timeout: 30000
+      pool-name: DatebookHikariCP
+      max-lifetime: 1800000
+      connection-timeout: 30000
+      connection-test-query: SELECT 1
+  
+  # Redis配置
+  redis:
+    host: localhost
+    port: 6379
+    password:
+    database: 0
+    timeout: 3000ms
+    lettuce:
+      pool:
+        max-active: 8
+        max-idle: 8
+        min-idle: 0
+        max-wait: -1ms
+  
+  # Jackson配置
+  jackson:
+    time-zone: GMT+8
+    date-format: yyyy-MM-dd HH:mm:ss
+    default-property-inclusion: non_null
+  
+  # 缓存配置
+  cache:
+    type: redis
+    redis:
+      time-to-live: 600000
+  
+  # 开发工具配置
+  devtools:
+    restart:
+      enabled: true
+      additional-paths: src/main/java
+      exclude: WEB-INF/**
+  
+  # 文件上传配置
+  servlet:
+    multipart:
+      max-file-size: 10MB
+      max-request-size: 10MB
+
+# MyBatis Plus配置
+mybatis-plus:
+  configuration:
+    map-underscore-to-camel-case: true
+    cache-enabled: false
+    call-setters-on-nulls: true
+    jdbc-type-for-null: 'null'
+    log-impl: org.apache.ibatis.logging.stdout.StdOutImpl
+  global-config:
+    db-config:
+      id-type: auto
+      logic-delete-field: deleted
+      logic-delete-value: 1
+      logic-not-delete-value: 0
+    banner: false
+  mapper-locations: classpath:mapper/*.xml
+  type-aliases-package: com.lazy.admin.entity
+
+# 安全配置
+security:
+  jwt:
+    secret: LazyAdminJwtSecretKey2024
+    expiration: 604800000  # 7天
+    header: Authorization
+    prefix: Bearer 
+
+# 日志配置
+logging:
+  level:
+    com.lazy.admin: DEBUG
+    com.baomidou.mybatisplus: DEBUG
+    org.springframework.security: DEBUG
+  pattern:
+    console: "%d{yyyy-MM-dd HH:mm:ss} [%thread] %-5level %logger{36} - %msg%n"
+    file: "%d{yyyy-MM-dd HH:mm:ss} [%thread] %-5level %logger{36} - %msg%n"
+  file:
+    name: logs/lazy-admin.log
+    max-size: 10MB
+    max-history: 30
+
+# 管理端点配置
+management:
+  endpoints:
+    web:
+      exposure:
+        include: health,info,metrics,env,beans,configprops
+  endpoint:
+    health:
+      show-details: always
+  info:
+    env:
+      enabled: true
+
+# 应用信息
+info:
+  app:
+    name: LazyAdmin
+    description: 基于Spring Boot的现代化权限管理系统
+    version: 2.0.0
+    author: Melon
+
+# API文档配置
+springdoc:
+  swagger-ui:
+    path: /swagger-ui.html
+    enabled: true
+  api-docs:
+    path: /v3/api-docs
+    enabled: true
+  packages-to-scan: com.lazy.admin.controller
+
+# 应用配置
+app:
+  # 上传文件路径
+  upload-path: /tmp/uploads
+  # 默认页面大小
+  default-page-size: 10
+  # 最大页面大小
+  max-page-size: 100
+  
+---
+# 开发环境配置
+spring:
+  profiles: dev
+  datasource:
+    url: jdbc:mysql://localhost:3306/lazy_admin_dev?useUnicode=true&characterEncoding=utf8&useSSL=false&serverTimezone=UTC&allowPublicKeyRetrieval=true
+  redis:
+    host: localhost
+    port: 6379
+    database: 0
+
+logging:
+  level:
+    root: INFO
+    com.lazy.admin: DEBUG
+
+---
+# 生产环境配置
+spring:
+  profiles: prod
+  datasource:
+    url: jdbc:mysql://prod-db:3306/lazy_admin?useUnicode=true&characterEncoding=utf8&useSSL=false&serverTimezone=UTC&allowPublicKeyRetrieval=true
+    username: ${DB_USERNAME:admin}
+    password: ${DB_PASSWORD:password}
+  redis:
+    host: prod-redis
+    port: 6379
+    database: 0
+    password: ${REDIS_PASSWORD:}
+
+logging:
+  level:
+    root: WARN
+    com.lazy.admin: INFO
+  file:
+    name: /app/logs/lazy-admin.log
+
+server:
+  port: 8080 
